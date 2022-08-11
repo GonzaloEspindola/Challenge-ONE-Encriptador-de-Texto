@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 
 :root {
-    --primary: #0A3871;
+    --primary: #1197cc;
     --secondary: #343A40;
     --third: #495057;
     --background: #F3F5FC;
@@ -66,11 +66,19 @@ button {
     width: 100%;
     max-width: 328px;
     cursor: pointer;
+    box-shadow: #094c66 4px 4px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200;
 }
 
 .button-primary {
     background-color: var(--primary);
     color: var(--background);
+}
+
+.button-primary:active, .button-secondary:active {
+    transform: translateY(4px) translateX(4px);
+    box-shadow: #094c66 0px 0px 0px;
 }
 
 .button-secondary {
