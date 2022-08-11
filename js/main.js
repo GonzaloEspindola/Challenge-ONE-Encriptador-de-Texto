@@ -1,32 +1,44 @@
-const textInput = document.getElementById('textInput');
-const resultImg = document.getElementById('resultImg');
-const resultTitle = document.getElementById('resultTitle');
-const resultInput = document.getElementById('resultInput');
+const textInput = document.getElementById('textInput')
+const resultImg = document.getElementById('resultImg')
+const resultTitle = document.getElementById('resultTitle')
+const resultInput = document.getElementById('resultInput')
 
-const primaryButton = document.getElementById('button-primary');
-const secondaryButton = document.getElementById('button-secondary');
-const copyButton = document.getElementById('copy-button');
+const primaryButton = document.getElementById('button-primary')
+const secondaryButton = document.getElementById('button-secondary')
+const copyButton = document.getElementById('copy-button')
 
 textInput.addEventListener('keyup', () => {
     if(textInput.value.length == 0) {
-        resultImg.style.display = "block";
-        resultTitle.style.display = "block";
+        resultImg.style.display = "block"
+        resultTitle.style.display = "block"
         resultTitle.innerText = 'Ningun mensaje fue encontrado'
-        resultInput.innerText = 'Ingresa el texto que desees encriptar o desencriptar';
+        resultInput.innerText = 'Ingresa el texto que desees encriptar o desencriptar'
+        copyButton.style.display = 'none'
     }else if (textInput.value.length >= 1) {
-        resultTitle.innerText = 'Parece que hemos encontrado algo'
-        resultInput.innerText = textInput.value;
+        resultTitle.innerText = 'Puedes encriptar o desencriptar tu mensage'
+        resultInput.innerText = textInput.value
     }
 })
 
 primaryButton.onclick = () => {
-    const newResult = textInput.value;
+    const newResult = textInput.value
     encrypt(newResult)
 }
 
 secondaryButton.onclick = () => {
-    const newResult = textInput.value;
+    const newResult = textInput.value
     decrypt(newResult)
+}
+
+copyButton.onclick = () => {
+    var input = document.createElement('input')
+    input.setAttribute('value', resultInput.innerText);
+    document.body.appendChild(input)
+    input.select()
+    document.execCommand('copy')
+    document.body.removeChild(input)
+
+    copyButton.style.backgroundColor = '#77DD77'
 }
 
 const encrypt = (newResult) => {
@@ -38,7 +50,9 @@ const encrypt = (newResult) => {
     }
 
     resultTitle.innerText = 'Tu mensage ha sido encriptado:'
-    resultInput.innerText = newResult;
+    resultInput.innerText = newResult
+    copyButton.style.display = 'block'
+    copyButton.style.backgroundColor = 'transparent'
 }
 
 function decrypt(newResult) {
@@ -50,5 +64,7 @@ function decrypt(newResult) {
     }
 
     resultTitle.innerText = 'Tu mensage ha sido desencriptado:'
-    resultInput.innerText = newResult;
+    resultInput.innerText = newResult
+    copyButton.style.display = 'block'
+    copyButton.style.backgroundColor = 'transparent'
 }
