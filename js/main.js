@@ -27,7 +27,7 @@ textInput.addEventListener('keyup', () => {
         resultInput.innerText = 'Ingresa el texto que desees encriptar o desencriptar'
         copyButton.style.display = 'none'
     }else if (textInput.value.length >= 1) {
-        resultTitle.innerText = 'Puedes encriptar o desencriptar tu mensage'
+        resultTitle.innerText = 'Puedes encriptar o desencriptar tu mensaje'
         resultInput.innerText = textInput.value
     }
 })
@@ -63,7 +63,7 @@ const encrypt = (newResult) => {
         newResult = newResult.replace(decryptKeys[i], encryptKeys[i])
     }
 
-    resultTitle.innerText = 'Tu mensage ha sido encriptado:'
+    resultTitle.innerText = 'Tu mensaje ha sido encriptado:'
     resultInput.innerText = newResult
     resetCopyButtonStyles()
 }
@@ -76,7 +76,7 @@ function decrypt(newResult) {
         newResult = newResult.replace(encryptKeys[i], decryptKeys[i])
     }
 
-    resultTitle.innerText = 'Tu mensage ha sido desencriptado:'
+    resultTitle.innerText = 'Tu mensaje ha sido desencriptado:'
     resultInput.innerText = newResult
     resetCopyButtonStyles()
 }
