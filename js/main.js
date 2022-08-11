@@ -7,6 +7,18 @@ const primaryButton = document.getElementById('button-primary')
 const secondaryButton = document.getElementById('button-secondary')
 const copyButton = document.getElementById('copy-button')
 
+function validation(e) {
+    key = e.keyCode || e.which
+    
+    if(key == 8 || key == 32) {
+        return true
+    }
+
+    pattern = /[a-z]/
+    allow_key = String.fromCharCode(key)
+    return pattern.test(allow_key)
+}
+
 textInput.addEventListener('keyup', () => {
     if(textInput.value.length == 0) {
         resultImg.style.display = "block"
@@ -39,6 +51,8 @@ copyButton.onclick = () => {
     document.body.removeChild(input)
 
     copyButton.style.backgroundColor = '#77DD77'
+    copyButton.style.border = '1px solid #77DD77'
+    copyButton.style.color = 'white'
 }
 
 const encrypt = (newResult) => {
@@ -51,8 +65,7 @@ const encrypt = (newResult) => {
 
     resultTitle.innerText = 'Tu mensage ha sido encriptado:'
     resultInput.innerText = newResult
-    copyButton.style.display = 'block'
-    copyButton.style.backgroundColor = 'transparent'
+    resetCopyButtonStyles()
 }
 
 function decrypt(newResult) {
@@ -65,6 +78,12 @@ function decrypt(newResult) {
 
     resultTitle.innerText = 'Tu mensage ha sido desencriptado:'
     resultInput.innerText = newResult
+    resetCopyButtonStyles()
+}
+
+function resetCopyButtonStyles() {
     copyButton.style.display = 'block'
     copyButton.style.backgroundColor = 'transparent'
+    copyButton.style.color = '#1197cc'
+    copyButton.style.border = '1px solid #1197cc'
 }
