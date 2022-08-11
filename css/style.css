@@ -14,6 +14,7 @@
     padding: 0;
     margin: 0;
     font-family: "Roboto";
+    transition-duration: 0.5s;
 }
 
 .main {
@@ -31,7 +32,7 @@
     text-align: center;
 }
 
-.text-container input {
+.text-container textarea {
     display: flex;
     width: 100%;
     height: 300px;
@@ -39,6 +40,7 @@
     border: none;
     text-align: center;
     font-size: 1.3rem;
+    resize: none;
 }
 
 .text-container div {
@@ -88,12 +90,20 @@ button {
 }
 
 .text-result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
     padding: 32px;
     text-align: center;
     margin-top: 32px;
     border-radius: 32px;
     box-shadow: var(--shadow);
+}
+
+.text-result-container img {
+    width: 100%;
+    max-width: 300px;
 }
 
 .text-result-container .result-title {
@@ -103,6 +113,7 @@ button {
 .text-result-container .result-text {
     color: var(--third);
     margin: 25px;
+    overflow-wrap: break-word;
 }
 
 @media (min-width: 768px) {
@@ -133,8 +144,9 @@ button {
         padding: 100px;
     }
 
-    .text-container input {
-        flex-grow: 1;
+    .text-container textarea {
+        height: 500px !important;
+        padding: 10px 100px;
     }
 
     .buttons-container {
