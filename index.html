@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <title>Encriptador de Texto</title>
 </head>
 <body>
     <main class="main">
         <section class="text-container">
             <h2>Ingresar el texto para encriptar/desencriptar</h2>
-            <input type="text" id="textInput" onkeypress="return validation(event)"></input>
+            <textarea type="text" id="textInput" onkeypress="return validation(event)"></textarea>
             <div>
                 <img src="assets/Vector.png"/>
                 <p>Solo letras minusculas y sin acentos</p>
