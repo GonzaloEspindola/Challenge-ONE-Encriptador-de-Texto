@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 
 :root {
-    --primary: #1197cc;
-    --secondary: #343A40;
+    --primary: #fd2d2d;
+    --secondary: #ffa391;
+    --shadow-glitch: #F8F005;
     --third: #495057;
+    --success: #BDECB6;
     --background: #F3F5FC;
 
-    --shadow: 0px 24px 32px -8px #00000014;
+    --shadow: 0px 0px 32px -8px #00000050;
 }
 
 * {
@@ -17,12 +19,24 @@
     transition-duration: 0.5s;
 }
 
+.body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    background-image: url('../assets/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .main {
     display: flex;
     flex-direction: column;
+    align-self: center;
     padding: 10px;
-    min-height: 100vh;
-    background-color: var(--background);
+    height: 80vh;
+    width: 80vw;
+    box-shadow: var(--shadow);
 }
 
 .text-container h2 {
@@ -32,25 +46,32 @@
     text-align: center;
 }
 
+.text-container img {
+    width: 20px;
+}
+
 .text-container textarea {
-    display: flex;
     width: 100%;
     height: 300px;
     padding: 10px;
-    border: none;
-    text-align: center;
+    border: 0.5px solid #00000014;
     font-size: 1.3rem;
     resize: none;
+    background-color: transparent;
 }
 
 .text-container div {
     display: flex;
+    align-items: center;
     padding: 10px 0;
 }
 
 .text-container div p {
+    font-size: 0.8rem;
     margin-left: 5px;
     color: var(--third);
+    font-weight: 700;
+    opacity: 0.7;
 }
 
 .buttons-container {
@@ -62,32 +83,129 @@
 }
 
 button {
-    border-radius: 24px;
-    padding: 24px;
-    border: none;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    width: auto;
     max-width: 328px;
     cursor: pointer;
-    box-shadow: #094c66 4px 4px 0px;
-    border-radius: 8px;
-    transition: transform 200ms, box-shadow 200;
 }
 
-.button-primary {
-    background-color: var(--primary);
-    color: var(--background);
+.button-primary,
+.button-primary:after, .button-secondary,
+.button-secondary:after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 76px;
+    line-height: 78px;
+    font-size: 1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    background: linear-gradient(45deg, transparent 5%, var(--primary) 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    box-shadow: 6px 0px 0px var(--secondary);
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
-.button-primary:active, .button-secondary:active {
-    transform: translateY(4px) translateX(4px);
-    box-shadow: #094c66 0px 0px 0px;
+.button-primary,
+.button-primary:after {
+    flex-grow: 1;
 }
 
-.button-secondary {
-    background-color: transparent;
-    border: 1px solid var(--primary);
-    color: var(--primary);
+.button-primary img, .button-secondary img {
+    margin-right: 6px;
+    width: 40px;
 }
+
+.button-primary:after, .button-secondary:after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    
+    content: 'Encriptar';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, var(--secondary) 3%, var(--secondary) 5%, var(--primary) 5%);
+    text-shadow: -3px -3px 0px var(--shadow-glitch), 3px 3px 0px var(--secondary);
+    clip-path: var(--slice-0);
+}
+
+.button-primary:hover:after, .button-secondary:hover:after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .button-primary,
+  .button-primary:after, .button-secondary,
+  .button-secondary:after {
+    width: 200px;
+    height: 55px;
+    line-height: 88px;
+  }
+}
+
+/* end button */
 
 .text-result-container {
     display: flex;
@@ -104,13 +222,30 @@ button {
 .text-result-container img {
     width: 100%;
     max-width: 300px;
+    animation-name: imagen;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes imagen {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .text-result-container .result-title {
-    color: var(--secondary);
+    color: var(--third);
+    margin: 25px;
 }
 
 .text-result-container .result-text {
+    font-weight: bold;
     color: var(--third);
     margin: 25px;
     overflow-wrap: break-word;
@@ -140,17 +275,21 @@ button {
     .main .text-container {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         grid-area: text;
-        padding: 100px;
+        padding: 25px 100px 0 100px;
     }
 
     .text-container textarea {
-        height: 500px !important;
-        padding: 10px 100px;
+        height: 100%;
     }
 
     .buttons-container {
         grid-area: buttons;
+    }
+
+    .buttons-container button {
+        margin: 0 10px;
     }
 
     .text-result-section {
