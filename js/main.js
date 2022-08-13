@@ -50,9 +50,7 @@ copyButton.onclick = () => {
     document.execCommand('copy')
     document.body.removeChild(input)
 
-    copyButton.style.backgroundColor = '#77DD77'
-    copyButton.style.border = '1px solid #77DD77'
-    copyButton.style.color = 'white'
+    copyButton.style.background = "linear-gradient(45deg, transparent 5%, #BDECB6 5%);"
 }
 
 const encrypt = (newResult) => {
@@ -82,8 +80,5 @@ function decrypt(newResult) {
 }
 
 function resetCopyButtonStyles() {
-    copyButton.style.display = 'block'
-    copyButton.style.backgroundColor = 'transparent'
-    copyButton.style.color = '#1197cc'
-    copyButton.style.border = '1px solid #1197cc'
+    copyButton.style.display = 'flex'
 }
