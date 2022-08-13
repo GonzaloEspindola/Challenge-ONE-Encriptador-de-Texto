@@ -9,31 +9,33 @@
     <title>Encriptador de Texto</title>
 </head>
 <body>
-    <main class="main">
-        <section class="text-container">
-            <h2>Ingresar el texto para encriptar/desencriptar</h2>
-            <textarea type="text" id="textInput" onkeypress="return validation(event)"></textarea>
-            <div>
-                <img src="assets/Vector.png"/>
-                <p>Solo letras minusculas y sin acentos</p>
-            </div>
-        </section>
-    
-        <section class="buttons-container">
-            <button class="button-primary" id="button-primary">Encriptar</button>
-            <button class="button-secondary" id="button-secondary">Desencriptar</button>
-        </section>
-    
-        <section class="text-result-section">
-            <div class="text-result-container">
-                <img src="assets/Muñeco.png" id="resultImg">
-                <h2 class="result-title" id="resultTitle">Ningun mensaje fue encontrado</h2>
-                <p class="result-text" id="resultInput">Ingresa el texto que desees encriptar o desencriptar</p>
-                
-                <button class="button-secondary" id="copy-button">Copiar</button>
-            </div>
-        </section>
-    </main>
+    <section class="body">
+        <main class="main">
+            <section class="text-container">
+                <textarea type="text" id="textInput" placeholder="Ingresar mensaje para encriptar o desencriptar" onkeypress="return validation(event)"></textarea>
+                <div>
+                    <img src="./assets/alerta.png"/>
+                    <p>Solo letras minusculas y sin acentos</p>
+                </div>
+            </section>
+        
+            <section class="buttons-container">
+                <button class="button-primary" id="button-primary"><img src="./assets/candado.png"> <p>ENCRIPTAR</p></button>
+                <button class="button-primary" id="button-secondary"><img src="./assets/desbloqueado.png"> <p> DESENCRIPTAR</p></button>
+
+            </section>
+        
+            <section class="text-result-section">
+                <div class="text-result-container">
+                    <img src="./assets/archivo-encriptado.png" id="resultImg">
+                    <h2 class="result-title" id="resultTitle">Ningun mensaje fue encontrado</h2>
+                    <p class="result-text" id="resultInput">Ingresa el texto que desees encriptar o desencriptar</p>
+                    
+                    <button class="button-secondary" id="copy-button">Copiar</button>
+                </div>
+            </section>
+        </main>
+    </section>
 
     <script src="js/main.js"></script>
 </body>
