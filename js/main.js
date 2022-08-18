@@ -56,29 +56,33 @@ copyButton.onclick = () => {
 }
 
 const encrypt = (newResult) => {
-    let decryptKeys = [/e/gi, /i/gi, /a/gi, /o/gi, /u/gi]
-    let encryptKeys = ['enter', 'imes', 'ai', 'ober', 'ufat']
-
-    for (i = 0; i < encryptKeys.length; i++) {
-        newResult = newResult.replace(decryptKeys[i], encryptKeys[i])
+    if(newResult.length > 1) {
+        let decryptKeys = [/e/gi, /i/gi, /a/gi, /o/gi, /u/gi]
+        let encryptKeys = ['enter', 'imes', 'ai', 'ober', 'ufat']
+    
+        for (i = 0; i < encryptKeys.length; i++) {
+            newResult = newResult.replace(decryptKeys[i], encryptKeys[i])
+        }
+    
+        resultTitle.innerText = 'Tu mensaje ha sido encriptado:'
+        resultInput.innerText = newResult
+        resetCopyButtonStyles()
     }
-
-    resultTitle.innerText = 'Tu mensaje ha sido encriptado:'
-    resultInput.innerText = newResult
-    resetCopyButtonStyles()
 }
 
 function decrypt(newResult) {
-    let encryptKeys = [/enter/g, /imes/g, /ai/g, /ober/g, /ufat/g]
-    let decryptKeys = ['e', 'i', 'a', 'o', 'u']
-
-    for (i = 0; i < encryptKeys.length; i++) {
-        newResult = newResult.replace(encryptKeys[i], decryptKeys[i])
+    if(newResult.length > 1) {
+        let encryptKeys = [/enter/g, /imes/g, /ai/g, /ober/g, /ufat/g]
+        let decryptKeys = ['e', 'i', 'a', 'o', 'u']
+    
+        for (i = 0; i < encryptKeys.length; i++) {
+            newResult = newResult.replace(encryptKeys[i], decryptKeys[i])
+        }
+    
+        resultTitle.innerText = 'Tu mensaje ha sido desencriptado:'
+        resultInput.innerText = newResult
+        resetCopyButtonStyles()
     }
-
-    resultTitle.innerText = 'Tu mensaje ha sido desencriptado:'
-    resultInput.innerText = newResult
-    resetCopyButtonStyles()
 }
 
 function resetCopyButtonStyles() {
